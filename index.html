@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071216">
+  <meta name="description" content="PeppermintGrave — an independent music artist creating ambient sounds, nostalgic memories, and midnight frequencies.">
+  <title>PeppermintGrave | A Quiet Place for Sound</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071216;
+      --bg-soft: #0b1b20;
+      --panel: rgba(14, 36, 42, 0.58);
+      --panel-strong: rgba(16, 43, 50, 0.84);
+      --text: #e5fbfd;
+      --muted: #8eafb4;
+      --faint: #58767b;
+      --cyan: #a6f5fb;
+      --cyan-soft: #68dce7;
+      --line: rgba(166, 245, 251, 0.15);
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(52, 129, 139, 0.13), transparent 28rem),
+        radial-gradient(circle at 85% 70%, rgba(33, 102, 114, 0.11), transparent 32rem),
+        var(--bg);
+      font-family: "Rajdhani", "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .brand,
+    .nav-links,
+    .eyebrow,
+    .subscribe-btn,
+    .secondary-btn,
+    .section-kicker,
+    .section-title,
+    .sound-card,
+    .memory-label,
+    .memory-value,
+    .philosophy-line,
+    .connect-button,
+    .footer-brand,
+    .footer-links {
+      font-family: "Orbitron", "Rajdhani", "Segoe UI", Arial, sans-serif;
+    }
+
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(166, 245, 251, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166, 245, 251, 0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 22rem;
+      height: 22rem;
+      left: 50%;
+      top: 38%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(93, 220, 231, 0.045);
+      filter: blur(70px);
+      z-index: -1;
+      pointer-events: none;
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }
+      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(7, 18, 22, 0.78);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(166, 245, 251, 0.4);
+      border-radius: 50%;
+      color: var(--cyan);
+      font-size: 17px;
+      box-shadow: 0 0 18px rgba(104, 220, 231, 0.08);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 0 100px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan-soft);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--cyan-soft);
+      opacity: 0.65;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(3.3rem, 9vw, 7.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.075em;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    h1 span {
+      display: block;
+      color: var(--cyan-soft);
+      opacity: 0.82;
+    }
+
+    .hero-description {
+      max-width: 510px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .subscribe-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 58px;
+      padding: 15px 21px;
+      color: #c9fbff;
+      background: rgba(13, 35, 42, 0.76);
+      border: 1px solid rgba(108, 226, 239, 0.38);
+      border-radius: 15px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 0 1px rgba(108, 226, 239, 0.03),
+        0 12px 35px var(--shadow);
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .subscribe-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        115deg,
+        transparent 18%,
+        rgba(137, 241, 255, 0.05) 42%,
+        rgba(137, 241, 255, 0.18) 50%,
+        transparent 78%
+      );
+      transform: translateX(-125%);
+      transition: transform 0.85s ease;
+    }
+
+    .subscribe-btn::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px solid rgba(167, 245, 255, 0.06);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .subscribe-btn:hover {
+      transform: translateY(-4px);
+      background: rgba(17, 47, 55, 0.9);
+      border-color: rgba(121, 235, 247, 0.72);
+      box-shadow:
+        0 0 28px rgba(72, 211, 228, 0.13),
+        0 18px 42px var(--shadow);
+    }
+
+    .subscribe-btn:hover::before {
+      transform: translateX(125%);
+    }
+
+    .subscribe-btn:active {
+      transform: translateY(-1px) scale(0.985);
+    }
+
+    .youtube-icon {
+      position: relative;
+      z-index: 1;
+      width: 28px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      background: var(--cyan);
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(140, 235, 244, 0.2);
+      transition: box-shadow 0.35s ease;
+    }
+
+    .youtube-icon::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #0a2028;
+      margin-left: 2px;
+    }
+
+    .subscribe-btn:hover .youtube-icon {
+      box-shadow: 0 0 21px rgba(140, 235, 244, 0.48);
+    }
+
+    .subscribe-text {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1px;
+    }
+
+    .subscribe-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .subscribe-subtitle {
+      color: rgba(185, 248, 255, 0.48);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .subscribe-arrow {
+      position: relative;
+      z-index: 1;
+      margin-left: 8px;
+      color: rgba(185, 248, 255, 0.5);
+      font-size: 19px;
+      transition: transform 0.35s ease, color 0.35s ease;
+    }
+
+    .subscribe-btn:hover .subscribe-arrow {
+      transform: translateX(4px);
+      color: var(--cyan);
+    }
+
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 15px 21px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .secondary-btn:hover {
+      color: var(--text);
+      border-color: rgba(166, 245, 251, 0.35);
+      background: rgba(166, 245, 251, 0.04);
+    }
+
+    .hero-note {
+      margin-top: 26px;
+      color: var(--faint);
+      font-size: 11px;
+      letter-spacing: 1.3px;
+    }
+
+    .floating-orbit {
+      position: absolute;
+      right: 4%;
+      top: 50%;
+      width: min(32vw, 360px);
+      aspect-ratio: 1;
+      transform: translateY(-50%);
+      opacity: 0.7;
+      pointer-events: none;
+      contain: layout paint;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(166, 245, 251, 0.11);
+      border-radius: 50%;
+      transform-origin: center;
+      will-change: transform, opacity;
+      animation: ringDrift 14s cubic-bezier(.45,0,.55,1) infinite;
+    }
+
+    .orbit-ring::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      border: 1px solid rgba(166, 245, 251, 0.035);
+      opacity: 0;
+      transform: scale(0.94);
+      animation: ringEcho 14s ease-out infinite;
+      pointer-events: none;
+    }
+
+    .orbit-ring:nth-child(2) {
+      inset: 13%;
+      border-style: dashed;
+      opacity: 0.52;
+      animation-duration: 18s;
+      animation-delay: -5s;
+    }
+
+    .orbit-ring:nth-child(2)::after {
+      animation-delay: -5s;
+    }
+
+    .orbit-ring:nth-child(3) {
+      inset: 28%;
+      border-color: rgba(166, 245, 251, 0.17);
+      animation-duration: 11s;
+      animation-delay: -2.5s;
+    }
+
+    .orbit-ring:nth-child(3)::after {
+      animation-delay: -2.5s;
+    }
+
+    .orbit-center {
+      position: absolute;
+      inset: 39%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(166, 245, 251, 0.2);
+      border-radius: 50%;
+      color: var(--cyan);
+      font-size: 32px;
+      box-shadow: 0 0 50px rgba(104, 220, 231, 0.08);
+    }
+
+    @keyframes ringDrift {
+      0%, 100% {
+        transform: scale(0.965) rotate(-2deg);
+        opacity: 0.48;
+      }
+      50% {
+        transform: scale(1.035) rotate(2deg);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes ringEcho {
+      0% {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+      25% {
+        opacity: 0.18;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.12);
+      }
+    }
+
+    section {
+      padding: 105px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      color: var(--cyan-soft);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      font-weight: 600;
+    }
+
+    .section-intro {
+      max-width: 370px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .memory-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--line);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+    }
+
+    .memory-main,
+    .memory-side {
+      background: linear-gradient(145deg, rgba(17, 48, 55, 0.68), rgba(8, 23, 28, 0.88));
+      padding: 45px;
+    }
+
+    .memory-main p {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 2;
+    }
+
+    .memory-main p + p {
+      margin-top: 22px;
+    }
+
+    .memory-quote {
+      margin-top: 34px;
+      padding-left: 19px;
+      border-left: 1px solid var(--cyan-soft);
+      color: var(--cyan);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .memory-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .memory-side::before {
+      content: "";
+      width: 100%;
+      height: 180px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(166, 245, 251, 0.16), transparent 23%),
+        radial-gradient(circle at 20% 30%, rgba(104, 220, 231, 0.12), transparent 20%),
+        linear-gradient(135deg, rgba(166, 245, 251, 0.04), rgba(166, 245, 251, 0));
+      border: 1px solid rgba(166, 245, 251, 0.08);
+    }
+
+    .memory-list {
+      list-style: none;
+      display: grid;
+      gap: 17px;
+    }
+
+    .memory-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(166, 245, 251, 0.08);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .memory-list li span:last-child {
+      color: var(--faint);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      padding: 42px 0 55px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--faint);
+      font-size: 12px;
+    }
+
+    .footer-copy strong {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+
+    /* The ambient audio is generated locally with Web Audio after the first user gesture. */
+    .ambient-audio-status {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Enhanced motion */
+    .nav {
+      animation: navEnter 0.9s ease both;
+    }
+
+    .brand {
+      transition: transform 0.35s ease, letter-spacing 0.35s ease;
+    }
+
+    .brand:hover {
+      transform: translateX(3px);
+      letter-spacing: 3px;
+    }
+
+    .brand-mark {
+      animation: markPulse 3.2s ease-in-out infinite;
+    }
+
+    .eyebrow,
+    .hero-description,
+    .hero-actions,
+    .hero-note {
+      animation: heroRise 0.9s cubic-bezier(.2,.75,.25,1) both;
+    }
+
+    .hero-description { animation-delay: 0.12s; }
+    .hero-actions { animation-delay: 0.22s; }
+    .hero-note { animation-delay: 0.34s; }
+
+    .orbit-center {
+      animation: centerPulse 4s ease-in-out infinite;
+    }
+
+    .memory-panel {
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .memory-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 75px rgba(0, 0, 0, 0.24);
+    }
+
+    .memory-side::before {
+      animation: ambientGlow 6s ease-in-out infinite;
+    }
+
+    .memory-list li {
+      transition: transform 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .memory-list li:hover {
+      transform: translateX(5px);
+      padding-left: 5px;
+      color: var(--text);
+    }
+
+    .secondary-btn {
+      transition: color 0.3s ease, border-color 0.3s ease,
+                  background 0.3s ease, transform 0.3s ease;
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .subscribe-btn.is-loading {
+      pointer-events: none;
+      transform: translateY(-3px) scale(0.99);
+      border-color: rgba(166, 245, 251, 0.8);
+      box-shadow:
+        0 0 35px rgba(72, 211, 228, 0.28),
+        0 18px 50px var(--shadow);
+    }
+
+    .subscribe-btn.is-loading::before {
+      animation: subscribeSweep 1.05s ease-in-out infinite;
+      transform: translateX(125%);
+    }
+
+    .subscribe-btn.is-loading .youtube-icon {
+      animation: subscribeIconPulse 0.7s ease-in-out infinite alternate;
+    }
+
+    .subscribe-btn.is-loading .subscribe-arrow {
+      animation: arrowLaunch 0.75s ease-in-out infinite;
+      color: var(--cyan);
+    }
+
+    .subscribe-btn.is-loading .subscribe-title {
+      animation: textFlicker 0.9s ease-in-out infinite alternate;
+    }
+
+    @keyframes navEnter {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes markPulse {
+      0%, 100% { box-shadow: 0 0 18px rgba(104, 220, 231, 0.08); }
+      50% { box-shadow: 0 0 28px rgba(104, 220, 231, 0.28); }
+    }
+
+    @keyframes centerPulse {
+      0%, 100% { transform: scale(0.96); box-shadow: 0 0 50px rgba(104, 220, 231, 0.08); }
+      50% { transform: scale(1.04); box-shadow: 0 0 75px rgba(104, 220, 231, 0.18); }
+    }
+
+    @keyframes ambientGlow {
+      0%, 100% { opacity: 0.72; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
+    @keyframes subscribeSweep {
+      0% { transform: translateX(-125%); }
+      100% { transform: translateX(125%); }
+    }
+
+    @keyframes subscribeIconPulse {
+      from { transform: scale(1); box-shadow: 0 0 15px rgba(140, 235, 244, 0.2); }
+      to { transform: scale(1.12); box-shadow: 0 0 28px rgba(140, 235, 244, 0.65); }
+    }
+
+    @keyframes arrowLaunch {
+      0%, 100% { transform: translateX(2px); }
+      50% { transform: translateX(8px); }
+    }
+
+    @keyframes textFlicker {
+      from { opacity: 0.72; }
+      to { opacity: 1; }
+    }
+
+
+    /* New atmospheric sections */
+    .sound-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .sound-card {
+      min-height: 310px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(166, 245, 251, 0.08), transparent 12rem),
+        linear-gradient(145deg, rgba(17, 48, 55, 0.62), rgba(8, 23, 28, 0.88));
+      transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .sound-card::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -55px;
+      bottom: -65px;
+      border: 1px solid rgba(166, 245, 251, 0.1);
+      border-radius: 50%;
+      transition: transform 0.7s ease;
+    }
+
+    .sound-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(166, 245, 251, 0.34);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.2);
+    }
+
+    .sound-card:hover::after {
+      transform: scale(1.7);
+    }
+
+    .sound-index {
+      color: var(--faint);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .sound-symbol {
+      margin-top: 35px;
+      color: var(--cyan-soft);
+      font-size: 42px;
+      line-height: 1;
+      opacity: 0.75;
+      animation: symbolFloat 4s ease-in-out infinite;
+    }
+
+    .sound-card:nth-child(2) .sound-symbol {
+      animation-delay: -1.2s;
+    }
+
+    .sound-card:nth-child(3) .sound-symbol {
+      animation-delay: -2.4s;
+    }
+
+    .sound-card h3 {
+      margin-top: 30px;
+      font-size: 23px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .sound-card p {
+      margin-top: 10px;
+      max-width: 330px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .philosophy-panel {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.75fr 1.45fr 0.55fr;
+      align-items: center;
+      gap: 45px;
+      padding: 55px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 12% 50%, rgba(104, 220, 231, 0.11), transparent 20rem),
+        linear-gradient(135deg, rgba(17, 48, 55, 0.7), rgba(8, 23, 28, 0.9));
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+    }
+
+    .philosophy-mark {
+      width: 190px;
+      height: 190px;
+      position: relative;
+      margin: auto;
+      border: 1px solid rgba(166, 245, 251, 0.12);
+      border-radius: 50%;
+      animation: philosophySpin 22s linear infinite;
+    }
+
+    .philosophy-mark::before,
+    .philosophy-mark::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border: 1px solid rgba(166, 245, 251, 0.15);
+      border-radius: 50%;
+    }
+
+    .philosophy-mark::after {
+      inset: 37%;
+      border-color: rgba(166, 245, 251, 0.25);
+    }
+
+    .philosophy-copy h2 {
+      margin-top: 8px;
+    }
+
+    .philosophy-copy p {
+      max-width: 650px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .philosophy-line {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      color: var(--faint);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    .philosophy-line span {
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(166, 245, 251, 0.1);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .philosophy-line span:hover {
+      color: var(--cyan);
+      transform: translateX(5px);
+    }
+
+    .connect-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 45px;
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(12, 31, 37, 0.48);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+    }
+
+    .connect-panel h2 {
+      margin-top: 6px;
+    }
+
+    .connect-panel p {
+      max-width: 570px;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .connect-button {
+      flex-shrink: 0;
+    }
+
+    @keyframes symbolFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(4deg); }
+    }
+
+    @keyframes philosophySpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links a {
+        display: none;
+      }
+
+      .floating-orbit {
+        width: 300px;
+        right: -100px;
+        top: 26%;
+        opacity: 0.35;
+      }
+
+      .hero {
+        padding-top: 135px;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .memory-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .sound-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .philosophy-panel {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .philosophy-mark {
+        width: 160px;
+        height: 160px;
+      }
+
+      .philosophy-copy p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .philosophy-line {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .brand {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+      }
+
+      .hero {
+        min-height: 92vh;
+        padding: 125px 0 75px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 16vw, 5.2rem);
+      }
+
+      .hero-description {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .subscribe-btn,
+      .secondary-btn {
+        width: 100%;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-intro {
+        margin-top: 18px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .memory-main,
+      .memory-side {
+        padding: 27px;
+      }
+
+      .memory-main p {
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      .sound-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sound-card {
+        min-height: 245px;
+      }
+
+      .philosophy-panel {
+        padding: 30px 25px;
+        gap: 30px;
+      }
+
+      .connect-panel {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 30px 25px;
+      }
+
+      .connect-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+
+    /* Centered responsive UI + aspect-ratio constraints */
+    :root {
+      --ui-max-width: 1120px;
+      --ui-gutter: clamp(14px, 3vw, 40px);
+      --ui-card-radius: 24px;
+    }
+
+    body {
+      text-align: center;
+      min-width: 320px;
+    }
+
+    .container {
+      width: min(var(--ui-max-width), calc(100% - (var(--ui-gutter) * 2)));
+      margin-inline: auto;
+    }
+
+    .nav-inner,
+    .hero-content,
+    .section-heading,
+    .memory-panel,
+    .sound-grid,
+    .philosophy-panel,
+    .connect-panel,
+    .footer-inner {
+      margin-inline: auto;
+    }
+
+    .nav-inner {
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-block: 12px;
+    }
+
+    .nav-links {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      width: min(100%, 760px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      justify-content: center;
+    }
+
+    h1,
+    .hero-description,
+    .hero-note,
+    .section-heading,
+    .section-intro,
+    .memory-main p,
+    .memory-quote,
+    .sound-card,
+    .sound-card p,
+    .philosophy-copy,
+    .philosophy-copy p,
+    .connect-panel,
+    .connect-panel p,
+    .footer-inner {
+      text-align: center;
+    }
+
+    h1,
+    .hero-description,
+    .hero-note,
+    .section-intro,
+    .memory-main p,
+    .sound-card p,
+    .philosophy-copy p,
+    .connect-panel p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-note {
+      width: 100%;
+    }
+
+    .floating-orbit {
+      left: 50%;
+      right: auto;
+      top: 52%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      opacity: 0.28;
+    }
+
+    .memory-panel {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .memory-main,
+    .memory-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .memory-quote {
+      padding: 0 0 0 0;
+      border-left: 0;
+      border-top: 1px solid var(--cyan-soft);
+      padding-top: 22px;
+      width: min(100%, 540px);
+    }
+
+    .memory-list {
+      width: min(100%, 430px);
+    }
+
+    .memory-list li {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .memory-list li span:last-child {
+      min-width: 24px;
+    }
+
+    .sound-grid {
+      width: 100%;
+    }
+
+    .sound-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 310px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .sound-symbol {
+      margin-top: 28px;
+    }
+
+    .philosophy-panel {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: 32px;
+      padding: clamp(30px, 5vw, 55px);
+    }
+
+    .philosophy-mark {
+      width: min(190px, 42vw);
+      height: min(190px, 42vw);
+      aspect-ratio: 1 / 1;
+    }
+
+    .philosophy-line {
+      width: min(100%, 500px);
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .connect-panel {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .connect-panel > div {
+      width: min(100%, 680px);
+    }
+
+    .connect-button {
+      margin-inline: auto;
+    }
+
+    .footer-inner {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-links {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Explicit UI frame constraint: keeps interface blocks from becoming too wide
+       while allowing the page itself to remain naturally scrollable. */
+    .memory-panel,
+    .philosophy-panel,
+    .connect-panel {
+      max-width: 1120px;
+    }
+
+    @media (max-width: 850px) {
+      .memory-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-orbit {
+        width: min(300px, 70vw);
+        left: 50%;
+        top: 28%;
+        right: auto;
+        opacity: 0.22;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, var(--ui-max-width));
+      }
+
+      .nav-inner {
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .hero-actions {
+        width: 100%;
+        align-items: center;
+      }
+
+      .subscribe-btn,
+      .secondary-btn {
+        width: min(100%, 520px);
+        justify-content: center;
+      }
+
+      .sound-card {
+        aspect-ratio: auto;
+        min-height: 245px;
+      }
+
+      .memory-list {
+        width: 100%;
+      }
+    }
+
+  
+/* =========================
+   SECRET ARCHIVE MUSIC SYSTEM
+   ========================= */
+.secret-archive-panel {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 980px);
+  margin-inline: auto;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(143, 237, 245, 0.22);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(101, 225, 236, 0.09), transparent 32%),
+    linear-gradient(145deg, rgba(12, 39, 45, 0.96), rgba(5, 18, 22, 0.98));
+  box-shadow: 0 30px 90px rgba(0,0,0,.28), inset 0 0 55px rgba(89,219,231,.025);
+}
+.secret-archive-panel::before,
+.secret-archive-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 1px solid rgba(122, 229, 238, .08);
+  animation: archivePulse 8s ease-in-out infinite;
+}
+.secret-archive-panel::before { width: 360px; height: 360px; right: -170px; top: -180px; }
+.secret-archive-panel::after { width: 230px; height: 230px; left: -130px; bottom: -130px; animation-delay: -3s; }
+
+.archive-head { position: relative; z-index: 1; text-align: center; margin-bottom: 28px; }
+.archive-kicker { margin-bottom: 10px; }
+.archive-title {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.archive-subtitle {
+  max-width: 650px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: clamp(.95rem, 2vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.archive-player {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 34px);
+  align-items: center;
+  padding: clamp(18px, 4vw, 30px);
+  border: 1px solid rgba(132, 232, 240, .16);
+  border-radius: 22px;
+  background: rgba(2, 14, 18, .54);
+  backdrop-filter: blur(16px);
+}
+.archive-art {
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(145,239,247,.25);
+  background: radial-gradient(circle, rgba(124,235,243,.16), rgba(3,19,23,.95) 68%);
+  box-shadow: 0 0 45px rgba(82,214,226,.09);
+}
+.archive-art::before,
+.archive-art::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(137,235,243,.2);
+  border-radius: 50%;
+  animation: archiveRing 5s ease-in-out infinite;
+}
+.archive-art::before { width: 52%; height: 52%; }
+.archive-art::after { width: 78%; height: 78%; animation-delay: -2.5s; }
+.archive-art-core {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 25px rgba(126,238,246,.75);
+  animation: archiveCore 2.8s ease-in-out infinite;
+}
+
+.archive-now { min-width: 0; }
+.archive-track-label { color: var(--cyan-soft); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
+.archive-track-title {
+  margin: 8px 0 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.15rem, 3vw, 1.8rem);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.archive-track-status { color: var(--muted); font-size: .85rem; }
+
+.archive-progress-wrap { margin-top: 18px; }
+.archive-progress {
+  width: 100%; height: 5px; appearance: none; border: 0; border-radius: 999px;
+  background: rgba(154, 238, 245, .12); cursor: pointer;
+}
+.archive-progress::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px rgba(121,237,245,.6); }
+.archive-progress::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px rgba(121,237,245,.6); }
+.archive-times { display:flex; justify-content:space-between; margin-top:7px; color: rgba(181,220,224,.58); font-size:.72rem; letter-spacing:.08em; }
+
+.archive-controls { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; flex-wrap:wrap; }
+.archive-btn {
+  width: 42px; height: 42px; display:grid; place-items:center; border-radius:50%;
+  border:1px solid rgba(144,235,243,.18); background:rgba(121,226,235,.045); color:var(--text);
+  cursor:pointer; transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  font: inherit;
+}
+.archive-btn:hover { transform: translateY(-2px); border-color: rgba(144,235,243,.5); background:rgba(121,226,235,.09); box-shadow:0 8px 25px rgba(66,207,220,.09); }
+.archive-btn:active { transform: scale(.96); }
+.archive-btn.play { width:56px; height:56px; color:#06161a; background:var(--cyan); border-color:var(--cyan); box-shadow:0 0 28px rgba(116,232,241,.2); }
+.archive-btn.active { border-color:var(--cyan); color:var(--cyan); }
+
+.archive-secondary { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:15px; flex-wrap:wrap; }
+.archive-volume { display:flex; align-items:center; gap:10px; min-width:180px; color:var(--muted); font-size:.75rem; }
+.archive-volume input { width:130px; accent-color:var(--cyan); }
+.archive-eq { display:flex; align-items:flex-end; gap:3px; height:25px; opacity:.45; }
+.archive-eq span { width:3px; border-radius:3px; background:var(--cyan); height:30%; animation: eq 1.05s ease-in-out infinite alternate; animation-play-state:paused; }
+.archive-eq.playing span { animation-play-state:running; }
+.archive-eq span:nth-child(2){animation-delay:-.35s}.archive-eq span:nth-child(3){animation-delay:-.7s}.archive-eq span:nth-child(4){animation-delay:-.18s}.archive-eq span:nth-child(5){animation-delay:-.52s}
+
+.archive-list { position:relative; z-index:1; margin-top:24px; display:grid; gap:8px; max-height:410px; overflow:auto; padding-right:4px; scrollbar-width:thin; }
+.archive-item {
+  width:100%; display:grid; grid-template-columns:36px minmax(0,1fr) auto; align-items:center; gap:12px;
+  padding:12px 13px; border:1px solid transparent; border-radius:14px; background:rgba(129,226,235,.025);
+  color:inherit; text-align:left; cursor:pointer; transition:background .22s ease, border-color .22s ease, transform .22s ease;
+}
+.archive-item:hover { transform:translateX(3px); background:rgba(129,226,235,.06); border-color:rgba(144,235,243,.12); }
+.archive-item.current { background:rgba(120,229,238,.08); border-color:rgba(144,235,243,.25); }
+.archive-number { color:rgba(181,220,224,.45); font-family:'Orbitron',sans-serif; font-size:.68rem; text-align:center; }
+.archive-item.current .archive-number { color:var(--cyan); }
+.archive-item-title { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:.88rem; }
+.archive-item-state { color:rgba(181,220,224,.45); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; }
+.archive-item.current .archive-item-state { color:var(--cyan-soft); }
+
+@keyframes archivePulse { 0%,100%{transform:scale(.94);opacity:.55} 50%{transform:scale(1.04);opacity:1} }
+@keyframes archiveRing { 0%,100%{transform:scale(.86);opacity:.35} 50%{transform:scale(1.06);opacity:.8} }
+@keyframes archiveCore { 0%,100%{transform:scale(.8);opacity:.65} 50%{transform:scale(1.15);opacity:1} }
+@keyframes eq { from{height:20%} to{height:100%} }
+
+@media (max-width: 700px) {
+  .secret-archive-panel { padding:22px 16px; border-radius:22px; }
+  .archive-player { grid-template-columns:1fr; text-align:center; }
+  .archive-art { width:min(150px, 46vw); margin-inline:auto; }
+  .archive-secondary { justify-content:center; }
+  .archive-volume { justify-content:center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .secret-archive-panel::before,.secret-archive-panel::after,.archive-art::before,.archive-art::after,.archive-art-core,.archive-eq span { animation:none !important; }
+}
+
+</style>
+</head>
+
+<body>
+  <header class="nav" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="PeppermintGrave home">
+        <span class="brand-mark"></span>
+        <span>PEPPERMINTGRAVE</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#sound">Sound</a>
+        <a href="#philosophy">Philosophy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Independent music artist</div>
+
+          <h1>
+            Some memories
+            <span>never disappear.</span>
+          </h1>
+
+          <p class="hero-description">
+            PeppermintGrave is an independent music artist creating atmospheric soundscapes, nostalgic melodies, and late-night frequencies.
+            Music made from personal ideas, moods, memories, and the moments that are difficult to put into words.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="subscribe-btn"
+              href="https://www.youtube.com/@PeppermintGraveツ?sub_confirmation=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Subscribe to PeppermintGrave on YouTube"
+            >
+              <span class="youtube-icon" aria-hidden="true"></span>
+
+              <span class="subscribe-text">
+                <span class="subscribe-title">Subscribe to PeppermintGrave</span>
+                <span class="subscribe-subtitle">A quiet place for sound</span>
+              </span>
+
+              <span class="subscribe-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="secondary-btn" href="#about">Explore the feeling ↓</a>
+          </div>
+
+          <p class="hero-note">Some memories live. Some memories fade.</p>
+        </div>
+      </div>
+
+      <div class="floating-orbit" aria-hidden="true">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-center"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-label">About PeppermintGrave</div>
+            <h2>An artist behind<br>the atmosphere.</h2>
+          </div>
+
+          <p class="section-intro">
+            PeppermintGrave is my artist name and the identity behind the music I create. This space is a home for my sound, ideas, influences, and the atmosphere I want each piece to carry.
+          </p>
+        </div>
+
+        <div class="memory-panel reveal">
+          <div class="memory-main">
+            <p>
+              PeppermintGrave is my artist name — an independent music identity built around emotional, atmospheric, nostalgic, and experimental sound.
+            </p>
+
+            <p>
+              I make music to capture feelings, ideas, memories, and atmospheres that stay with me. Some tracks are quiet and nostalgic; others can explore different moods and sounds.
+            </p>
+
+            <div class="memory-quote">
+              “For the memories we keep,<br>
+              and the ones that quietly disappear.”
+            </div>
+          </div>
+
+          <div class="memory-side">
+            <ul class="memory-list">
+              <li><span>Independent artist</span><span>01</span></li>
+              <li><span>Atmospheric sound</span><span>02</span></li>
+              <li><span>Nostalgic ideas</span><span>03</span></li>
+              <li><span>Original music</span><span>04</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+
+    <section id="sound">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-label">The sound</div>
+            <h2>Not one genre.<br>One atmosphere.</h2>
+          </div>
+          <p class="section-intro">
+            PeppermintGrave is about the feeling behind the music — atmosphere first,
+            genre second, and always room for something unexpected.
+          </p>
+        </div>
+
+        <div class="sound-grid">
+          <article class="sound-card reveal">
+            <span class="sound-index">01</span>
+            <div class="sound-symbol">~</div>
+            <h3>Atmosphere</h3>
+            <p>
+              Spacious textures, quiet tension, distant melodies, and sounds that
+              feel like they belong somewhere between memory and the present.
+            </p>
+          </article>
+
+          <article class="sound-card reveal">
+            <span class="sound-index">02</span>
+            <div class="sound-symbol">+</div>
+            <h3>Experiment</h3>
+            <p>
+              Different ideas, tones, rhythms, and production approaches can exist
+              under the same artist identity. The sound is allowed to evolve.
+            </p>
+          </article>
+
+          <article class="sound-card reveal">
+            <span class="sound-index">03</span>
+            <div class="sound-symbol">∞</div>
+            <h3>Emotion</h3>
+            <p>
+              Every piece starts with a mood, thought, image, or feeling worth
+              turning into sound — whether it is calm, nostalgic, strange, or bright.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="philosophy">
+      <div class="container">
+        <div class="philosophy-panel reveal">
+          <div class="philosophy-mark" aria-hidden="true"></div>
+
+          <div class="philosophy-copy">
+            <div class="section-label">The idea behind it</div>
+            <h2>Make something<br>worth remembering.</h2>
+            <p>
+              PeppermintGrave is more than a name attached to a song. It is the
+              artist identity I use to explore sound and turn personal ideas into
+              something other people can experience.
+            </p>
+            <p>
+              I do not want every track to feel identical. I want each one to have
+              its own place, its own atmosphere, and its own reason to exist.
+            </p>
+          </div>
+
+          <div class="philosophy-line">
+            <span>CREATE</span>
+            <span>FEEL</span>
+            <span>REMEMBER</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect">
+      <div class="container">
+        <div class="secret-archive-panel reveal" id="secretArchive">
+          <div class="archive-head">
+            <div class="section-label archive-kicker">The private frequency</div>
+            <h2 class="archive-title">Secret Archive</h2>
+            <p class="archive-subtitle">
+              A living shelf of songs, unfinished memories, late-night frequencies,
+              and pieces that belong together even when they were made apart.
+            </p>
+          </div>
+
+          <div class="archive-player">
+            <div class="archive-art" aria-hidden="true"><div class="archive-art-core"></div></div>
+
+            <div class="archive-now">
+              <div class="archive-track-label">Now accessing archive</div>
+              <h3 class="archive-track-title" id="archiveTitle">Mosslight Drift</h3>
+              <div class="archive-track-status" id="archiveStatus">Ready to play</div>
+
+              <div class="archive-progress-wrap">
+                <input class="archive-progress" id="archiveProgress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Song progress">
+                <div class="archive-times"><span id="archiveCurrent">0:00</span><span id="archiveDuration">0:00</span></div>
+              </div>
+
+              <div class="archive-controls">
+                <button class="archive-btn" id="archiveShuffle" type="button" aria-label="Shuffle playlist" title="Shuffle">⤨</button>
+                <button class="archive-btn" id="archivePrev" type="button" aria-label="Previous song" title="Previous">◀</button>
+                <button class="archive-btn play" id="archivePlay" type="button" aria-label="Play" title="Play">▶</button>
+                <button class="archive-btn" id="archiveNext" type="button" aria-label="Next song" title="Next">▶</button>
+                <button class="archive-btn" id="archiveRepeat" type="button" aria-label="Repeat playlist" title="Repeat">↻</button>
+              </div>
+
+              <div class="archive-secondary">
+                <label class="archive-volume" for="archiveVolume">VOL <input id="archiveVolume" type="range" min="0" max="1" value="0.72" step="0.01"></label>
+                <div class="archive-eq" id="archiveEq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="archive-list" id="archiveList" aria-label="Secret Archive playlist"></div>
+          <audio id="archiveAudio" preload="metadata"></audio>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">
+         <strong>PEPPERMINTGRAVE</strong><br>
+        Some memories live. Some memories fade.
+      </p>
+
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="https://www.youtube.com/@PeppermintGraveツ" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="ambient-audio-status" id="ambientAudioStatus" aria-live="polite">Ambient sound is ready and will begin after your first interaction.</div>
+
+  <script>
+    /*
+      Subtle ambient bed:
+      - No external audio file is required.
+      - Browsers generally block audible autoplay, so it begins after the user's first gesture.
+      - The gain is intentionally very low and the sound is shaped as a slow, soft drone.
+    */
+    let ambientStarted = false;
+    let ambientContext = null;
+    let ambientMaster = null;
+
+    function startAmbientSound() {
+      if (ambientStarted) return;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+
+      try {
+        ambientContext = new AudioContextClass();
+        ambientMaster = ambientContext.createGain();
+        ambientMaster.gain.value = 0.018;
+        ambientMaster.connect(ambientContext.destination);
+
+        const frequencies = [55, 82.41, 110];
+        frequencies.forEach((frequency, index) => {
+          const oscillator = ambientContext.createOscillator();
+          const gain = ambientContext.createGain();
+          const filter = ambientContext.createBiquadFilter();
+
+          oscillator.type = index === 0 ? "sine" : "triangle";
+          oscillator.frequency.value = frequency;
+          filter.type = "lowpass";
+          filter.frequency.value = 420;
+          filter.Q.value = 0.35;
+          gain.gain.value = index === 0 ? 0.34 : 0.12;
+
+          oscillator.connect(filter);
+          filter.connect(gain);
+          gain.connect(ambientMaster);
+          oscillator.start();
+        });
+
+        // Very slow level modulation keeps the drone from feeling static.
+        const lfo = ambientContext.createOscillator();
+        const lfoGain = ambientContext.createGain();
+        lfo.type = "sine";
+        lfo.frequency.value = 0.045;
+        lfoGain.gain.value = 0.006;
+        lfo.connect(lfoGain);
+        lfoGain.connect(ambientMaster.gain);
+        lfo.start();
+
+        ambientStarted = true;
+        const status = document.getElementById("ambientAudioStatus");
+        if (status) status.textContent = "Ambient sound enabled.";
+      } catch (error) {
+        // Audio is an enhancement only; the page remains fully functional if it fails.
+      }
+    }
+
+    ["pointerdown", "touchstart", "keydown"].forEach((eventName) => {
+      window.addEventListener(eventName, startAmbientSound, { once: true, passive: true });
+    });
+
+    document.querySelectorAll(".subscribe-btn").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        if (button.dataset.redirecting === "true") {
+          event.preventDefault();
+          return;
+        }
+
+        event.preventDefault();
+        button.dataset.redirecting = "true";
+        button.classList.add("is-loading");
+
+        const title = button.querySelector(".subscribe-title");
+        const subtitle = button.querySelector(".subscribe-subtitle");
+        const originalTitle = title ? title.textContent : "";
+        const originalSubtitle = subtitle ? subtitle.textContent : "";
+
+        if (title) title.textContent = "Opening YouTube...";
+        if (subtitle) subtitle.textContent = "Preparing your visit";
+
+        window.setTimeout(() => {
+          window.location.href = button.href;
+        }, 1500);
+      });
+    });
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 24);
+    }, { passive: true });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    /* Secret Archive: self-contained embedded music player. */
+    const archiveTracks = [
+  { title: 'From the Other Side of the Screen', src: 'audio/from-the-other-side-of-the-screen.mp3' },
+  { title: 'Mosslight Drift', src: 'audio/mosslight-drift.mp3' },
+  { title: 'Old Notebook', src: 'audio/old-notebook.mp3' },
+  { title: 'Paper Moons', src: 'audio/paper-moons.mp3' },
+  { title: 'Static Skies', src: 'audio/static-skies.mp3' },
+  { title: 'Still Here', src: 'audio/still-here.mp3' },
+  { title: 'When You Still Knew Me (1)', src: 'audio/when-you-still-knew-me.mp3' },
+  { title: 'When the Night Learns Your Name', src: 'audio/when-the-night-learns-your-name.mp3' },
+  { title: 'Where the Daylight Ends', src: 'audio/where-the-daylight-ends.mp3' },
+  { title: 'Where the Silence Grows (1)', src: 'audio/where-the-silence-grows.mp3' }
+];
+    const archiveAudio = document.getElementById('archiveAudio');
+    const archiveTitle = document.getElementById('archiveTitle');
+    const archiveStatus = document.getElementById('archiveStatus');
+    const archiveProgress = document.getElementById('archiveProgress');
+    const archiveCurrent = document.getElementById('archiveCurrent');
+    const archiveDuration = document.getElementById('archiveDuration');
+    const archivePlay = document.getElementById('archivePlay');
+    const archivePrev = document.getElementById('archivePrev');
+    const archiveNext = document.getElementById('archiveNext');
+    const archiveShuffle = document.getElementById('archiveShuffle');
+    const archiveRepeat = document.getElementById('archiveRepeat');
+    const archiveVolume = document.getElementById('archiveVolume');
+    const archiveList = document.getElementById('archiveList');
+    const archiveEq = document.getElementById('archiveEq');
+
+    let archiveIndex = 0;
+    let archiveShuffleOn = false;
+    let archiveRepeatOn = false;
+
+    function archiveTime(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return '0:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function renderArchiveList() {
+      archiveList.innerHTML = archiveTracks.map((track, i) => `
+        <button class="archive-item ${i === archiveIndex ? 'current' : ''}" type="button" data-index="${i}" aria-label="Play ${track.title}">
+          <span class="archive-number">${String(i + 1).padStart(2, '0')}</span>
+          <span class="archive-item-title">${track.title}</span>
+          <span class="archive-item-state">${i === archiveIndex ? 'selected' : 'open'}</span>
+        </button>`).join('');
+      archiveList.querySelectorAll('.archive-item').forEach(btn => btn.addEventListener('click', () => {
+        loadArchiveTrack(Number(btn.dataset.index), true);
+      }));
+    }
+
+    function loadArchiveTrack(index, autoplay = false) {
+      archiveIndex = (index + archiveTracks.length) % archiveTracks.length;
+      const track = archiveTracks[archiveIndex];
+      archiveAudio.src = track.src;
+      archiveAudio.currentTime = 0;
+      archiveTitle.textContent = track.title;
+      archiveStatus.textContent = autoplay ? 'Decrypting frequency…' : 'Ready to play';
+      archiveProgress.value = 0;
+      archiveCurrent.textContent = '0:00';
+      archiveDuration.textContent = '0:00';
+      renderArchiveList();
+      if (autoplay) archiveAudio.play().catch(() => { archiveStatus.textContent = 'Tap play to open this track'; });
+    }
+
+    function setArchivePlaying(playing) {
+      archivePlay.textContent = playing ? 'Ⅱ' : '▶';
+      archivePlay.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      archivePlay.title = playing ? 'Pause' : 'Play';
+      archiveEq.classList.toggle('playing', playing);
+      archiveStatus.textContent = playing ? 'Playing from the Secret Archive' : 'Paused';
+    }
+
+    archivePlay.addEventListener('click', () => {
+      if (archiveAudio.paused) archiveAudio.play().catch(() => {});
+      else archiveAudio.pause();
+    });
+    archivePrev.addEventListener('click', () => {
+      loadArchiveTrack(archiveIndex - 1, true);
+    });
+    archiveNext.addEventListener('click', () => {
+      if (archiveShuffleOn) loadArchiveTrack(Math.floor(Math.random() * archiveTracks.length), true);
+      else loadArchiveTrack(archiveIndex + 1, true);
+    });
+    archiveShuffle.addEventListener('click', () => {
+      archiveShuffleOn = !archiveShuffleOn;
+      archiveShuffle.classList.toggle('active', archiveShuffleOn);
+      archiveShuffle.setAttribute('aria-pressed', String(archiveShuffleOn));
+    });
+    archiveRepeat.addEventListener('click', () => {
+      archiveRepeatOn = !archiveRepeatOn;
+      archiveRepeat.classList.toggle('active', archiveRepeatOn);
+      archiveRepeat.setAttribute('aria-pressed', String(archiveRepeatOn));
+    });
+    archiveVolume.addEventListener('input', () => { archiveAudio.volume = Number(archiveVolume.value); });
+    archiveProgress.addEventListener('input', () => {
+      if (Number.isFinite(archiveAudio.duration)) archiveAudio.currentTime = (Number(archiveProgress.value) / 100) * archiveAudio.duration;
+    });
+    archiveAudio.addEventListener('loadedmetadata', () => {
+      archiveDuration.textContent = archiveTime(archiveAudio.duration);
+      archiveProgress.value = 0;
+    });
+    archiveAudio.addEventListener('timeupdate', () => {
+      if (Number.isFinite(archiveAudio.duration) && archiveAudio.duration > 0) archiveProgress.value = (archiveAudio.currentTime / archiveAudio.duration) * 100;
+      archiveCurrent.textContent = archiveTime(archiveAudio.currentTime);
+    });
+    archiveAudio.addEventListener('play', () => setArchivePlaying(true));
+    archiveAudio.addEventListener('pause', () => setArchivePlaying(false));
+    archiveAudio.addEventListener('ended', () => {
+      if (archiveRepeatOn) { loadArchiveTrack(archiveIndex, true); return; }
+      if (archiveShuffleOn) { loadArchiveTrack(Math.floor(Math.random() * archiveTracks.length), true); return; }
+      if (archiveIndex < archiveTracks.length - 1) loadArchiveTrack(archiveIndex + 1, true);
+      else { archiveStatus.textContent = 'Archive complete'; setArchivePlaying(false); }
+    });
+
+    archiveAudio.volume = Number(archiveVolume.value);
+    loadArchiveTrack(0, false);
+
+  </script>
+</body>
+</html>
